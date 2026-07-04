@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Palette « Marie-Claude » : chaude et élégante (terre cuite, or doux, crème)
+   — clin d'œil aux fresques de Botticelli et au flamenco.
+   NB : les noms de variables gardent le nommage « green » du template
+   d'origine pour ne pas renommer toutes les classes Tailwind. */
+:root {
+  --dark-green: #2b1f1a;          /* brun profond (fond sombre, boutons) */
+  --medium-dark-green: #4a3327;   /* brun moyen */
+  --button-hover: #3a2a20;
+  --body-green: #6b5648;          /* texte courant */
+  --heading-primary: #8a4a35;     /* terre cuite (titres) */
+  --heading-accent: #c99a5b;      /* or doux (accents) */
+  --bottom-text: #5d4636;
+  --bottom-btn: #5d4636;
+  --bottom-btn-hover: #46352a;
+  --bg-light: #faf7f2;            /* crème */
+}
+
+.bg-bottom-btn-hover {
+  background: #23180f;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite reverse;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mind Map Lines - Classic Tree Structure */
+.mindmap-children-container {
+  position: relative;
+  padding-left: 32px;
+  margin-left: 16px;
+}
+
+.mindmap-children-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background-color: rgba(138, 74, 53, 0.15);
+}
+
+.mindmap-children-container > li {
+  position: relative;
+}
+
+.mindmap-children-container > li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -32px;
+  width: 32px;
+  height: 2px;
+  background-color: rgba(138, 74, 53, 0.15);
+  transform: translateY(-50%);
+}
+
+.mindmap-children-container > li:last-child::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  bottom: -32px;
+  left: -32px;
+  width: 4px;
+  background-color: #ffffff;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Neue Haas Grotesk Display Pro 55 Roman', 'Neue Haas Grotesk Text Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-light);
+  color: var(--body-green);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
