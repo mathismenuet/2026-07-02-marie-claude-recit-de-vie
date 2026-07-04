@@ -24,14 +24,24 @@ verrouillé (`seconds` + `time` de chaque chapitre).
 
 ## 🚀 Lancer / déployer
 
+Double-cliquer **`Lancer le site.command`** dans le Finder : installe les
+dépendances si besoin, démarre le serveur local et ouvre le navigateur sur
+`http://localhost:5173`.
+
+En ligne (production) : **https://2026-07-02-marie-claude-recit-de-vi.vercel.app**
+— déploiement automatique à chaque push sur `main` (Vercel ↔ GitHub connectés).
+Dépôt : https://github.com/mathismenuet/2026-07-02-marie-claude-recit-de-vie
+
+En ligne de commande :
 ```bash
 npm install
 npm run dev       # développement
 npm run build     # build production (dist/)
-vercel --prod     # déploiement (framework: Other, output: dist)
+vercel --prod     # déploiement manuel (framework: Vite, output: dist)
 ```
 
-`vercel.json` force le `noindex` (page privée non référencée).
+`vercel.json` force le `noindex` (page non référencée par les moteurs de recherche —
+seul le code d'accès protège l'accès au contenu, à ne partager qu'à la famille).
 
 ## Notes de contenu
 
