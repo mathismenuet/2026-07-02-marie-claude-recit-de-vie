@@ -5,10 +5,13 @@ import ChaptersCarousel from './ChaptersCarousel';
 export default function StoryLayout() {
   return (
     <section id="story" className="w-full relative bg-[#fdfbf7]">
-      {/* Vidéo : sticky en haut sur mobile (les chapitres défilent dessous),
-          pleine largeur ~2/3 d'écran sur desktop (bandeau horizontal dessous) */}
-      <div className="w-full sticky top-0 z-40 bg-black shadow-md lg:static lg:h-[66vh] flex flex-col">
-        <Film />
+      {/* Vidéo : sticky en haut sur mobile (les chapitres défilent dessous).
+          Sur desktop : 80vh de haut, cadrée au vrai ratio 16:9 du film
+          (le conteneur épouse la vidéo, pas de bandes noires latérales). */}
+      <div className="w-full sticky top-0 z-40 bg-black shadow-md lg:static lg:h-[80vh] flex flex-col lg:flex-row lg:justify-center">
+        <div className="w-full h-full lg:w-auto lg:aspect-video lg:max-w-full">
+          <Film />
+        </div>
       </div>
 
       <div id="chapitres">

@@ -11,7 +11,15 @@ export default function BoomerangVideoBg({ src, className }: Props) {
   const [framesReady, setFramesReady] = useState(false);
   const framesRef = useRef<HTMLCanvasElement[]>([]);
 
+  // Sur mobile, la capture frame-par-frame en canvas explose la mémoire
+  // (des centaines de canvases 960px) et fige le téléphone : on joue
+  // simplement la vidéo en boucle native. L'effet boomerang reste sur desktop.
+  const [useBoomerang] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  );
+
   useEffect(() => {
+    if (!useBoomerang) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -88,7 +96,7 @@ export default function BoomerangVideoBg({ src, className }: Props) {
       video.removeEventListener('loadedmetadata', onLoaded);
       video.removeEventListener('ended', onEnded);
     };
-  }, [src]);
+  }, [src, useBoomerang]);
 
   useEffect(() => {
     if (!framesReady) return;
@@ -127,6 +135,23 @@ export default function BoomerangVideoBg({ src, className }: Props) {
     rafId = requestAnimationFrame(render);
     return () => cancelAnimationFrame(rafId);
   }, [framesReady]);
+
+  if (!useBoomerang) {
+    // Mobile : lecture native en boucle, zéro canvas, zéro capture mémoire.
+    return (
+      <div className={className ?? 'absolute inset-0 w-full h-full'}>
+        <video
+          src={src}
+          className="w-full h-full object-cover"
+          muted
+          playsInline
+          autoPlay
+          loop
+          preload="metadata"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={className ?? 'absolute inset-0 w-full h-full'}>

@@ -16,8 +16,8 @@ const mindMapData: MindMapNodeData = {
       label: 'Racines angevines (1944-1965)',
       children: [
         { id: 'naissance', label: 'Née le 25 décembre 1944 à Angers', children: [{ id: 'n1', label: 'Fausse aînée : Marie-France avant elle' }, { id: 'n2', label: 'Yannick, Catherine, puis Véronique et Sophie' }] },
-        { id: 'parents', label: 'Ses parents', children: [{ id: 'p1', label: 'France, directrice du Chillon' }, { id: 'p2', label: 'Ivan, coiffeur et artiste contrarié' }, { id: 'p3', label: 'Le grand-père forgeron, compagnon du devoir' }] },
-        { id: 'chillon', label: 'Le château du Chillon', children: [{ id: 'c1', label: 'Maison de convalescence, 80 malades' }, { id: 'c2', label: 'Cabanes, vélo, bois du « champignon »' }, { id: 'c3', label: 'Cinéma du dimanche pour les convalescentes' }, { id: 'c4', label: 'Messe de minuit aux lampes de poche' }] },
+        { id: 'parents', label: 'Ses parents', children: [{ id: 'p1', label: 'France, directrice du Chillon' }, { id: 'p2', label: 'Yvan, coiffeur et artiste contrarié' }, { id: 'p3', label: 'Le grand-père forgeron, compagnon du devoir' }] },
+        { id: 'chillon', label: 'Le château du Chillon', children: [{ id: 'c1', label: 'Maison de convalescence, 80 malades' }, { id: 'c2', label: 'La cabane avec électricité et poste de radio' }, { id: 'c3', label: 'Cinéma du dimanche pour les convalescentes' }, { id: 'c4', label: 'Messe de minuit aux lampes de poche' }] },
         { id: 'ecole', label: "L'école d'autrefois", children: [{ id: 'e1', label: 'Le bonnet d\'âne tourné en dérision' }, { id: 'e2', label: 'La langue de « bavarde »' }, { id: 'e3', label: 'Pensionnat et rébellion douce' }] },
       ]
     },
@@ -28,7 +28,7 @@ const mindMapData: MindMapNodeData = {
         { id: 'irlande', label: "L'Irlande à 18 ans", children: [{ id: 'i1', label: 'Assistante chez les sœurs du Sacré-Cœur' }, { id: 'i2', label: 'Les 9 kilos et le retour en transatlantique' }] },
         { id: 'madrid', label: 'Madrid', children: [{ id: 'm1', label: 'Arrivée « film de Buñuel »' }, { id: 'm2', label: 'Miguel Ángel, poète andalou' }, { id: 'm3', label: 'Flamenco et poèmes jusqu\'au bout de la nuit' }] },
         { id: 'metiers', label: 'Premiers métiers', children: [{ id: 'g1', label: 'Guide-interprète aux châteaux de la Loire' }, { id: 'g2', label: 'Hôtesse de l\'air Air France' }] },
-        { id: 'voyages', label: 'Les voyages', children: [{ id: 'v1', label: 'La liste écrite avec Daniel' }, { id: 'v2', label: 'Seule l\'Égypte faite ensemble' }, { id: 'v3', label: 'Mauritanie : Du Bellay dans le désert' }, { id: 'v4', label: 'Le Mexique à venir, avec Gabriela' }] },
+        { id: 'voyages', label: 'Les voyages', children: [{ id: 'v1', label: 'La liste écrite avec Daniel' }, { id: 'v2', label: 'La liste presque accomplie — il n\'en reste que deux ou trois' }, { id: 'v3', label: 'Mauritanie : Du Bellay dans le désert' }, { id: 'v4', label: 'Le Mexique à venir, avec Gabriela' }] },
       ]
     },
     {
@@ -36,7 +36,7 @@ const mindMapData: MindMapNodeData = {
       label: 'Daniel',
       children: [
         { id: 'rencontre', label: 'La rencontre', children: [{ id: 'r1', label: 'Premier soir à Paris, on frappe à la porte' }, { id: 'r2', label: 'Le télégramme « petite robe noire »' }, { id: 'r3', label: 'Le caveau de la Huchette' }] },
-        { id: 'couple', label: 'Leur couple', children: [{ id: 'cp1', label: '« Je t\'aime — moi non plus »' }, { id: 'cp2', label: '1 + 1 = 3' }, { id: 'cp3', label: 'Dushka, le surnom des Russes blancs' }, { id: 'cp4', label: 'Mariés dans la chapelle du Chillon' }] },
+        { id: 'couple', label: 'Leur couple', children: [{ id: 'cp1', label: '« Je t\'aime — moi non plus »' }, { id: 'cp2', label: '1 + 1 = 3' }, { id: 'cp3', label: 'Douchka, le surnom des Russes blancs' }, { id: 'cp4', label: 'Mariés dans la chapelle du Chillon' }] },
         { id: 'artway', label: 'Artway, le visionnaire', children: [{ id: 'a1', label: '« Un ordinateur dans chaque maison »' }, { id: 'a2', label: 'Abbaye de Cluny en 3D — pionniers' }, { id: 'a3', label: 'Bornes interactives du Palais des Papes' }, { id: 'a4', label: 'Le nom trouvé grâce à un caleçon de cycliste' }] },
         { id: 'presence', label: 'Depuis 2013', children: [{ id: 'd2', label: 'La tête sculptée derrière la vitre de l\'atelier' }, { id: 'd3', label: 'Poursuivre les projets communs' }] },
       ]
@@ -48,7 +48,7 @@ const mindMapData: MindMapNodeData = {
         { id: 'loic', label: 'Loïc', children: [{ id: 'l1', label: '« Pourquoi ils veulent se battre ? »' }, { id: 'l2', label: 'Vincent le Désossé, volleyeur de haut niveau' }] },
         { id: 'emmanuelle', label: 'Emmanuelle', children: [{ id: 'em1', label: 'La battante, docteure en droit' }] },
         { id: 'jocelyn', label: 'Jocelyn', children: [{ id: 'j1', label: 'La sieste aux volets fermés avec ses BD' }, { id: 'j2', label: '« Tu vois la mouche ? C\'est comme moi »' }] },
-        { id: 'quotidien', label: 'Souvenirs partagés', children: [{ id: 'q1', label: 'La Naïade et la serviette sur le portail' }, { id: 'q2', label: 'Kate, la fille au pair californienne' }, { id: 'q3', label: 'La permanente afro' }, { id: 'q4', label: 'Musées et théâtre avec les petits-enfants' }] },
+        { id: 'quotidien', label: 'Souvenirs partagés', children: [{ id: 'q1', label: 'La Naïade et la serviette sur le portail' }, { id: 'q2', label: 'Kate, la fille au pair californienne' }, { id: 'q3', label: 'La planche à voile « paquebot » de Daniel' }, { id: 'q4', label: 'Musées et théâtre avec les petits-enfants' }] },
       ]
     },
     {
@@ -57,7 +57,7 @@ const mindMapData: MindMapNodeData = {
       children: [
         { id: 'art1', label: 'Histoire de l\'art à la Sorbonne, enfants à charge' },
         { id: 'art2', label: 'Les fresques de Botticelli au Louvre' },
-        { id: 'art3', label: 'Charles d\'Orléans, Ronsard, Du Bellay, Rimbaud' },
+        { id: 'art3', label: 'Ronsard, Du Bellay, Rimbaud — les poèmes par cœur' },
         { id: 'art4', label: 'Les cours de français aux étrangers, depuis 10 ans' },
       ]
     },
@@ -70,7 +70,7 @@ const mindMapData: MindMapNodeData = {
         { id: 's3', label: '« La vie ne vaut rien, mais rien ne vaut la vie »' },
         { id: 's4', label: 'L\'éphémère qui dure : « le Graal »' },
         { id: 's5', label: 'Se contenter des petites choses : « l\'explosion de joie »' },
-        { id: 's6', label: '« Soyez curieux, soyez vous-mêmes, vivez émerveillés »' },
+        { id: 's6', label: '« Soyez curieux, soyez bienveillants, soyez aimants, soyez vous-même »' },
       ]
     }
   ]

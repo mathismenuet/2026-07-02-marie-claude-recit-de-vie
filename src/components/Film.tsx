@@ -59,6 +59,7 @@ export default function Film() {
         ref={iframeRef}
         id="main-video"
         src={`https://www.youtube.com/embed/${YT_SEQUENCES_PHARES}?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080`}
+        loading="lazy"
         title="Marie-Claude raconte son histoire à sa famille"
         className="absolute inset-0 w-full h-full border-0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

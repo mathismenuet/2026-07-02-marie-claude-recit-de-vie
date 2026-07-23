@@ -29,10 +29,12 @@ export default function FullVersion() {
           )}
         </div>
 
-        <div className="relative w-full aspect-video rounded-2xl sm:rounded-[2rem] overflow-hidden bg-dark-green/5 shadow-inner">
+        {/* Plein écran bord à bord sur mobile (comme le film principal), arrondi sur desktop */}
+        <div className="relative aspect-video overflow-hidden bg-dark-green/5 shadow-inner -mx-4 rounded-none sm:mx-0 sm:rounded-[2rem]">
           <iframe
             id="integrale-video"
             src={`https://www.youtube.com/embed/${YT_INTEGRALE}?rel=0&modestbranding=1&enablejsapi=1`}
+            loading="lazy"
             title="Interview intégrale de Marie-Claude"
             className={`absolute inset-0 w-full h-full border-0 ${INTEGRALE_DISPONIBLE ? '' : 'blur-[2px] opacity-40 pointer-events-none select-none'}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

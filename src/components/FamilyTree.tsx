@@ -1,37 +1,82 @@
 import { Heart } from 'lucide-react';
+import { seekYouTube } from '../utils/youtubeSeek';
 
 // Arbre familial de Marie-Claude — 3 enfants, 8 petits-enfants.
-const BRANCHES = [
+// Chaque pastille est cliquable : la vidéo intégrale saute au moment
+// où Marie-Claude évoque la personne (timecodes vérifiés sur la
+// transcription du montage final).
+
+interface Person {
+  emoji: string;
+  name: string;
+  sub?: string;
+  seconds: number | null; // null = pas de passage dédié trouvé
+}
+
+// Timecodes vérifiés sur la transcription de l'intégrale (juillet 2026) :
+// pour chaque personne, le passage le plus chaleureux où Marie-Claude parle d'elle.
+// Titouan et Thaïs ne sont jamais nommés : ils pointent sur le message
+// général aux petits-enfants (04:49:31, « que chacun trouve sa propre voix »).
+const MARIE_CLAUDE: Person = { emoji: '👵', name: 'Marie-Claude', sub: '« Dushka » — 81 ans', seconds: 95 };
+const DANIEL: Person = { emoji: '👴', name: 'Daniel', sub: '« Œil de Lynx »', seconds: 7940 };
+
+const BRANCHES: { parent: Person; children: Person[] }[] = [
   {
-    initials: 'Lo',
-    name: 'Loïc',
-    role: 'Fils aîné',
+    parent: { emoji: '👨', name: 'Loïc', seconds: 9518 },
     children: [
-      { initials: 'Ro', name: 'Robin' },
-      { initials: 'Es', name: 'Esteban' },
-      { initials: 'El', name: 'Elora' },
-      { initials: 'Ti', name: 'Titouan' },
+      { emoji: '👦', name: 'Robin', seconds: 11808 },
+      { emoji: '👦', name: 'Esteban', seconds: 17261 },
+      { emoji: '👧', name: 'Elora', seconds: 12003 },
+      { emoji: '👦', name: 'Titouan', seconds: 17371 },
     ],
   },
   {
-    initials: 'Em',
-    name: 'Emmanuelle',
-    role: 'Fille',
+    parent: { emoji: '👩', name: 'Emmanuelle', seconds: 9802 },
     children: [
-      { initials: 'Ju', name: 'Jules' },
-      { initials: 'Je', name: 'Jeanne' },
+      { emoji: '👦', name: 'Jules', seconds: 11824 },
+      { emoji: '👧', name: 'Jeanne', seconds: 12360 },
     ],
   },
   {
-    initials: 'Jo',
-    name: 'Jocelyn',
-    role: 'Fils',
+    parent: { emoji: '👨', name: 'Jocelyn', seconds: 9945 },
     children: [
-      { initials: 'Ar', name: 'Arthur' },
-      { initials: 'Th', name: 'Thaïs' },
+      { emoji: '👦', name: 'Arthur', seconds: 11909 },
+      { emoji: '👧', name: 'Thaïs', seconds: 17371 },
     ],
   },
 ];
+
+function seekIntegrale(seconds: number) {
+  seekYouTube('integrale-video', seconds, true);
+}
+
+function PersonBubble({ person, size, tone }: { person: Person; size: 'lg' | 'md' | 'sm'; tone: 'dark' | 'accent' | 'soft' | 'white' }) {
+  const sizes = {
+    lg: 'w-20 h-20 sm:w-24 sm:h-24 text-3xl sm:text-4xl',
+    md: 'w-16 h-16 text-2xl',
+    sm: 'w-14 h-14 text-xl',
+  }[size];
+  const tones = {
+    dark: 'bg-dark-green border-4 border-white shadow-xl shadow-dark-green/20',
+    accent: 'bg-heading-accent/80 border-4 border-white shadow-xl',
+    soft: 'bg-accent-yellow/10 border-2 border-white shadow-sm',
+    white: 'bg-white border border-black/5 shadow-sm',
+  }[tone];
+  const clickable = person.seconds !== null;
+
+  return (
+    <button
+      onClick={() => clickable && seekIntegrale(person.seconds as number)}
+      disabled={!clickable}
+      title={clickable ? `Voir le passage sur ${person.name} dans l'intégrale` : undefined}
+      className={`${sizes} ${tones} rounded-full flex items-center justify-center mb-2 transition-all duration-300 ${
+        clickable ? 'cursor-pointer hover:scale-110 hover:shadow-lg hover:border-heading-accent/40' : 'cursor-default'
+      }`}
+    >
+      <span aria-hidden>{person.emoji}</span>
+    </button>
+  );
+}
 
 export default function FamilyTree() {
   return (
@@ -44,26 +89,25 @@ export default function FamilyTree() {
           <p className="text-lg text-medium-dark-green/70 max-w-2xl mx-auto font-inter">
             Trois enfants, huit petits-enfants — « je fais partie d'une chaîne ininterrompue ».
           </p>
+          <p className="text-sm text-medium-dark-green/50 max-w-2xl mx-auto font-inter mt-2">
+            Cliquez sur un visage pour entendre Marie-Claude parler de cette personne dans l'interview intégrale.
+          </p>
         </div>
 
         {/* Couple */}
-        <div className="flex items-center justify-center gap-6 sm:gap-10 mb-4 relative z-10">
+        <div className="flex items-start justify-center gap-6 sm:gap-10 mb-4 relative z-10">
           <div className="flex flex-col items-center">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-dark-green rounded-full flex items-center justify-center text-white shadow-xl shadow-dark-green/20 mb-3 border-4 border-white">
-              <span className="text-xl sm:text-2xl font-normal" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif' }}>MC</span>
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-dark-green">Marie-Claude</h3>
-            <p className="text-body-green text-xs sm:text-sm">« Dushka » — 81 ans</p>
+            <PersonBubble person={MARIE_CLAUDE} size="lg" tone="dark" />
+            <h3 className="text-lg sm:text-xl font-semibold text-dark-green">{MARIE_CLAUDE.name}</h3>
+            <p className="text-body-green text-xs sm:text-sm">{MARIE_CLAUDE.sub}</p>
           </div>
 
-          <Heart className="w-6 h-6 text-heading-accent fill-heading-accent/30 -mt-10" />
+          <Heart className="w-6 h-6 text-heading-accent fill-heading-accent/30 mt-8" />
 
-          <div className="flex flex-col items-center opacity-80">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-heading-accent/80 rounded-full flex items-center justify-center text-white shadow-xl mb-3 border-4 border-white">
-              <span className="text-xl sm:text-2xl font-normal" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif' }}>Da</span>
-            </div>
-            <h3 className="text-lg sm:text-xl font-semibold text-dark-green">Daniel</h3>
-            <p className="text-body-green text-xs sm:text-sm italic">« Œil de Lynx »</p>
+          <div className="flex flex-col items-center opacity-90">
+            <PersonBubble person={DANIEL} size="lg" tone="accent" />
+            <h3 className="text-lg sm:text-xl font-semibold text-dark-green">{DANIEL.name}</h3>
+            <p className="text-body-green text-xs sm:text-sm italic">{DANIEL.sub}</p>
           </div>
         </div>
 
@@ -74,22 +118,17 @@ export default function FamilyTree() {
         {/* Branches */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 max-w-5xl mx-auto mt-8">
           {BRANCHES.map((branch) => (
-            <div key={branch.name} className="bg-bg-light/50 rounded-3xl p-6 border border-dark-green/5 shadow-sm relative">
+            <div key={branch.parent.name} className="bg-bg-light/50 rounded-3xl p-6 border border-dark-green/5 shadow-sm relative">
               <div className="hidden md:block absolute -top-8 left-1/2 -translate-x-1/2 w-[2px] h-8 bg-medium-dark-green/20"></div>
               <div className="flex flex-col items-center mb-6">
-                <div className="w-16 h-16 bg-accent-yellow/10 rounded-full flex items-center justify-center text-heading-accent mb-3 border-2 border-white shadow-sm">
-                  <span className="text-lg font-semibold">{branch.initials}</span>
-                </div>
-                <h3 className="text-base font-semibold text-dark-green">{branch.name}</h3>
-                <p className="text-body-green text-xs text-center">{branch.role}</p>
+                <PersonBubble person={branch.parent} size="md" tone="soft" />
+                <h3 className="text-base font-semibold text-dark-green">{branch.parent.name}</h3>
               </div>
 
               <div className="flex flex-wrap justify-center gap-4">
                 {branch.children.map((child) => (
                   <div key={child.name} className="flex flex-col items-center">
-                    <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-dark-green text-sm font-semibold mb-2 shadow-sm border border-black/5">
-                      {child.initials}
-                    </div>
+                    <PersonBubble person={child} size="sm" tone="white" />
                     <p className="text-xs font-medium text-dark-green">{child.name}</p>
                   </div>
                 ))}
