@@ -25,3 +25,6 @@ dist-ssr
 .vercel
 _conversations/
 .env*
+
+# Config Claude Code locale
+.claude/

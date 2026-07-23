@@ -38,7 +38,7 @@ const mindMapData: MindMapNodeData = {
         { id: 'rencontre', label: 'La rencontre', children: [{ id: 'r1', label: 'Premier soir à Paris, on frappe à la porte' }, { id: 'r2', label: 'Le télégramme « petite robe noire »' }, { id: 'r3', label: 'Le caveau de la Huchette' }] },
         { id: 'couple', label: 'Leur couple', children: [{ id: 'cp1', label: '« Je t\'aime — moi non plus »' }, { id: 'cp2', label: '1 + 1 = 3' }, { id: 'cp3', label: 'Dushka, le surnom des Russes blancs' }, { id: 'cp4', label: 'Mariés dans la chapelle du Chillon' }] },
         { id: 'artway', label: 'Artway, le visionnaire', children: [{ id: 'a1', label: '« Un ordinateur dans chaque maison »' }, { id: 'a2', label: 'Abbaye de Cluny en 3D — pionniers' }, { id: 'a3', label: 'Bornes interactives du Palais des Papes' }, { id: 'a4', label: 'Le nom trouvé grâce à un caleçon de cycliste' }] },
-        { id: 'presence', label: 'Depuis 2013', children: [{ id: 'd1', label: '« Il est partout, il est dans l\'air »' }, { id: 'd2', label: 'La tête sculptée derrière la vitre de l\'atelier' }, { id: 'd3', label: 'Poursuivre les projets communs' }] },
+        { id: 'presence', label: 'Depuis 2013', children: [{ id: 'd2', label: 'La tête sculptée derrière la vitre de l\'atelier' }, { id: 'd3', label: 'Poursuivre les projets communs' }] },
       ]
     },
     {

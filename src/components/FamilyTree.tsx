@@ -63,7 +63,7 @@ export default function FamilyTree() {
               <span className="text-xl sm:text-2xl font-normal" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif' }}>Da</span>
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-dark-green">Daniel</h3>
-            <p className="text-body-green text-xs sm:text-sm italic">« Il est partout, il est dans l'air »</p>
+            <p className="text-body-green text-xs sm:text-sm italic">« Œil de Lynx »</p>
           </div>
         </div>
 

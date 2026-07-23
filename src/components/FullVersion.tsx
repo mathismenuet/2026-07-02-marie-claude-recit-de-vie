@@ -1,5 +1,6 @@
 import { ExternalLink } from 'lucide-react';
 import { YT_INTEGRALE, INTEGRALE_DISPONIBLE } from '../data/siteConfig';
+import IntegraleChapters from './IntegraleChapters';
 
 export default function FullVersion() {
   return (
@@ -30,7 +31,8 @@ export default function FullVersion() {
 
         <div className="relative w-full aspect-video rounded-2xl sm:rounded-[2rem] overflow-hidden bg-dark-green/5 shadow-inner">
           <iframe
-            src={`https://www.youtube.com/embed/${YT_INTEGRALE}?rel=0&modestbranding=1`}
+            id="integrale-video"
+            src={`https://www.youtube.com/embed/${YT_INTEGRALE}?rel=0&modestbranding=1&enablejsapi=1`}
             title="Interview intégrale de Marie-Claude"
             className={`absolute inset-0 w-full h-full border-0 ${INTEGRALE_DISPONIBLE ? '' : 'blur-[2px] opacity-40 pointer-events-none select-none'}`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -49,6 +51,8 @@ export default function FullVersion() {
           )}
         </div>
       </div>
+
+      {INTEGRALE_DISPONIBLE && <IntegraleChapters />}
     </section>
   );
 }

@@ -1,17 +1,26 @@
 import Film from './Film';
 import ChaptersTimeline from './ChaptersTimeline';
+import ChaptersCarousel from './ChaptersCarousel';
 
 export default function StoryLayout() {
   return (
-    <section id="story" className="w-full flex flex-col lg:flex-row relative bg-[#fdfbf7]">
-      {/* Video Container: Sticky on Mobile & Desktop */}
-      <div className="w-full lg:w-[55%] xl:w-[60%] sticky top-0 lg:h-screen z-40 bg-black shadow-md lg:shadow-[10px_0_30px_rgba(0,0,0,0.1)] flex flex-col">
+    <section id="story" className="w-full relative bg-[#fdfbf7]">
+      {/* Vidéo : sticky en haut sur mobile (les chapitres défilent dessous),
+          pleine largeur ~2/3 d'écran sur desktop (bandeau horizontal dessous) */}
+      <div className="w-full sticky top-0 z-40 bg-black shadow-md lg:static lg:h-[66vh] flex flex-col">
         <Film />
       </div>
 
-      {/* Timeline Container: Scrolls */}
-      <div className="w-full lg:w-[45%] xl:w-[40%] relative min-h-screen">
-        <ChaptersTimeline />
+      <div id="chapitres">
+        {/* Mobile : timeline verticale */}
+        <div className="lg:hidden w-full relative">
+          <ChaptersTimeline />
+        </div>
+
+        {/* Desktop : bandeau horizontal défilant */}
+        <div className="hidden lg:block">
+          <ChaptersCarousel />
+        </div>
       </div>
     </section>
   );

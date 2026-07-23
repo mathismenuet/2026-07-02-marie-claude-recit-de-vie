@@ -18,7 +18,7 @@ export default function ChaptersTimeline() {
   }, []);
 
   return (
-    <div id="chapitres" className="w-full py-8 sm:py-16 px-4 sm:px-10 lg:px-12 bg-[#fdfbf7] relative overflow-hidden h-full">
+    <div className="w-full py-8 sm:py-16 px-4 sm:px-10 lg:px-12 bg-[#fdfbf7] relative overflow-hidden h-full">
 
       {/* Decorative Clouds */}
       <div className="absolute top-20 right-[-5%] opacity-20 animate-float pointer-events-none">

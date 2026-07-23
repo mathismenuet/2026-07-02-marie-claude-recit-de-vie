@@ -28,10 +28,6 @@ export default function Contact() {
               pourrait avoir une valeur particulière, n'hésitez pas à leur en parler, à leur
               partager cette page ou à nous mettre en contact.
             </p>
-            <p className="italic text-heading-primary">
-              « Mathis, je te souhaite bonne chance dans ton sillage. La continuité dans le
-              changement. » — Marie-Claude
-            </p>
           </div>
         </div>
 
