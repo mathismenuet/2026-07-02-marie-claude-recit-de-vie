@@ -1,5 +1,6 @@
 import { Heart } from 'lucide-react';
 import { seekYouTube } from '../utils/youtubeSeek';
+import HiddenMoment from './HiddenMoment';
 
 // Arbre familial de Marie-Claude — 3 enfants, 8 petits-enfants.
 // Chaque pastille est cliquable : la vidéo intégrale saute au moment
@@ -81,6 +82,8 @@ function PersonBubble({ person, size, tone }: { person: Person; size: 'lg' | 'md
 export default function FamilyTree() {
   return (
     <section id="genealogie" className="w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 bg-white relative border-t border-dark-green/5">
+      {/* Souvenir caché : le volley, l'autre grande histoire de la famille */}
+      <HiddenMoment emoji="🏐" seconds={10500} label="Un souvenir caché…" className="absolute top-12 right-6 sm:right-16" />
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-neue text-dark-green tracking-tight mb-6">

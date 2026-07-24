@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CheckCircle, XCircle, ChevronRight, RotateCcw } from 'lucide-react';
 import { quizData, type QuizOption } from '../data/quizData';
+import HiddenMoment from './HiddenMoment';
 
 export default function Quiz() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -77,10 +78,12 @@ export default function Quiz() {
   }
 
   return (
-    <section className="w-full py-16 px-4 bg-white border-t border-medium-dark-green/5">
+    <section className="relative w-full py-16 px-4 bg-white border-t border-medium-dark-green/5">
+      {/* Souvenir caché : Douchka et les Russes blancs */}
+      <HiddenMoment emoji="🪆" seconds={191} label="Un souvenir caché…" className="absolute top-8 right-6 sm:right-16" />
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-          
+
           {/* Header */}
           <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
             <div className="flex items-center gap-2">

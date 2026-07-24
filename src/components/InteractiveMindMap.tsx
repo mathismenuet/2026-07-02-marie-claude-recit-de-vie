@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronRight, BrainCircuit, X } from 'lucide-react';
+import HiddenMoment from './HiddenMoment';
 
 interface MindMapNodeData {
   id: string;
@@ -142,7 +143,9 @@ export default function InteractiveMindMap() {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <section className="w-full py-16 px-4 sm:px-6 md:px-10 bg-white border-t border-medium-dark-green/5 overflow-hidden">
+    <section className="relative w-full py-16 px-4 sm:px-6 md:px-10 bg-white border-t border-medium-dark-green/5 overflow-hidden">
+      {/* Souvenirs cachés : le flamenco de Madrid */}
+      <HiddenMoment emoji="💃" seconds={6572} label="Un souvenir caché…" className="absolute top-8 left-6 sm:left-16" delayed />
       <div className="max-w-7xl mx-auto flex flex-col items-center">
 
         {!isActive ? (

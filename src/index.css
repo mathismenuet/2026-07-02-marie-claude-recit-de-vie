@@ -46,6 +46,27 @@
   display: none;
 }
 
+/* Carrousel photos : défilement automatique très doux, pause au survol */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 75s linear infinite;
+  will-change: transform;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+  .marquee-wrap {
+    overflow-x: auto;
+  }
+}
+
 body {
   margin: 0;
   overflow-x: hidden;

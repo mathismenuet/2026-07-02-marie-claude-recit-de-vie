@@ -4,16 +4,16 @@ import IntegraleChapters from './IntegraleChapters';
 
 export default function FullVersion() {
   return (
-    <section className="w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 bg-bg-light">
-      <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+    <section className="w-full py-24 sm:py-32 bg-bg-light">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
           <div>
             <h2 className="text-3xl sm:text-4xl font-normal text-heading-primary mb-4" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif', letterSpacing: '-0.02em' }}>
               Version intégrale
             </h2>
             <p className="text-body-green text-base sm:text-lg font-inter">
               L'interview complète, chapitrée — pour celles et ceux qui souhaitent tout
-              revivre, du premier poème de Charles d'Orléans au mot de la fin.
+              revivre, du premier poème au mot de la fin.
             </p>
           </div>
           {INTEGRALE_DISPONIBLE && (
@@ -28,9 +28,13 @@ export default function FullVersion() {
             </a>
           )}
         </div>
+      </div>
 
-        {/* Plein écran bord à bord sur mobile (comme le film principal), arrondi sur desktop */}
-        <div className="relative aspect-video overflow-hidden bg-dark-green/5 shadow-inner -mx-4 rounded-none sm:mx-0 sm:rounded-[2rem]">
+      {/* Vidéo magnète pleine largeur, exactement comme le film principal :
+          bord à bord, sans arrondis, collée en haut de l'écran pendant que
+          les chapitres défilent dessous. */}
+      <div className="sticky top-0 z-40 bg-black shadow-md w-full lg:h-[74vh] flex flex-col lg:flex-row lg:justify-center">
+        <div className="relative w-full aspect-video lg:aspect-video lg:w-auto lg:h-full lg:max-w-full">
           <iframe
             id="integrale-video"
             src={`https://www.youtube.com/embed/${YT_INTEGRALE}?rel=0&modestbranding=1&enablejsapi=1`}
@@ -54,7 +58,11 @@ export default function FullVersion() {
         </div>
       </div>
 
-      {INTEGRALE_DISPONIBLE && <IntegraleChapters />}
+      {INTEGRALE_DISPONIBLE && (
+        <div className="px-4 sm:px-6 md:px-10">
+          <IntegraleChapters />
+        </div>
+      )}
     </section>
   );
 }

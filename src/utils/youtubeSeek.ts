@@ -6,7 +6,13 @@ export function seekYouTube(iframeId: string, seconds: number, scrollTo = false)
   const iframe = document.getElementById(iframeId) as HTMLIFrameElement | null;
   if (!iframe) return;
 
-  if (scrollTo) iframe.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (scrollTo) {
+    // Défilement doux pour les courtes distances ; saut direct quand on
+    // traverse toute la page (un smooth de 10 000 px est vertigineux et
+    // certains navigateurs l'interrompent).
+    const distance = Math.abs(iframe.getBoundingClientRect().top);
+    iframe.scrollIntoView({ behavior: distance > window.innerHeight * 3 ? 'instant' : 'smooth', block: 'center' });
+  }
 
   const send = () => {
     if (!iframe.contentWindow) return;

@@ -18,20 +18,23 @@ export default function ChaptersTimeline() {
   }, []);
 
   return (
-    <div className="w-full py-8 sm:py-16 px-4 sm:px-10 lg:px-12 bg-[#fdfbf7] relative overflow-hidden h-full">
+    <div className="w-full py-8 sm:py-16 px-4 sm:px-10 lg:px-12 bg-[#fdfbf7] relative h-full">
 
-      {/* Decorative Clouds */}
-      <div className="absolute top-20 right-[-5%] opacity-20 animate-float pointer-events-none">
-        <Cloud size={140} className="text-medium-dark-green fill-medium-dark-green" strokeWidth={1} />
-      </div>
-      <div className="absolute top-[30%] left-[-5%] opacity-10 animate-float-delayed pointer-events-none">
-        <Cloud size={180} className="text-dark-green fill-dark-green" strokeWidth={1} />
-      </div>
-      <div className="absolute bottom-[20%] right-[5%] opacity-15 animate-float pointer-events-none">
-        <Cloud size={110} className="text-accent-yellow fill-accent-yellow" strokeWidth={1} />
-      </div>
-      <div className="absolute bottom-[5%] left-[2%] opacity-20 animate-float-delayed pointer-events-none">
-        <Cloud size={130} className="text-medium-dark-green fill-medium-dark-green" strokeWidth={1} />
+      {/* Decorative Clouds — dans un calque clippé pour ne pas déborder,
+          sans overflow-hidden sur la racine (ça casserait les titres sticky). */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-[-5%] opacity-20 animate-float">
+          <Cloud size={140} className="text-medium-dark-green fill-medium-dark-green" strokeWidth={1} />
+        </div>
+        <div className="absolute top-[30%] left-[-5%] opacity-10 animate-float-delayed">
+          <Cloud size={180} className="text-dark-green fill-dark-green" strokeWidth={1} />
+        </div>
+        <div className="absolute bottom-[20%] right-[5%] opacity-15 animate-float">
+          <Cloud size={110} className="text-accent-yellow fill-accent-yellow" strokeWidth={1} />
+        </div>
+        <div className="absolute bottom-[5%] left-[2%] opacity-20 animate-float-delayed">
+          <Cloud size={130} className="text-medium-dark-green fill-medium-dark-green" strokeWidth={1} />
+        </div>
       </div>
 
       <div className="relative z-10 max-w-2xl mx-auto">
@@ -55,10 +58,12 @@ export default function ChaptersTimeline() {
           {CHAPTER_GROUPS.map((group, groupIndex) => (
             <div key={groupIndex} className="mb-10">
 
-              {/* Group Header (Grand Chapitre) */}
-              <div className="relative pl-8 sm:pl-12 pt-4 pb-4 sm:pt-6 sm:pb-6">
+              {/* Group Header (Grand Chapitre) — magnète sous la vidéo :
+                  reste collé pendant que ses souvenirs défilent, puis est
+                  poussé vers le haut par le grand chapitre suivant. */}
+              <div className="sticky top-[56.25vw] lg:top-[74vh] z-20 bg-[#fdfbf7] pl-8 sm:pl-12 py-3 sm:py-4 shadow-[0_10px_12px_-12px_rgba(43,31,26,0.18)]">
                 {/* Large Timeline dot for group */}
-                <div className="absolute -left-[14px] top-[22px] sm:top-[30px] w-7 h-7 rounded-full bg-heading-primary border-4 border-[#fdfbf7] flex items-center justify-center z-10 shadow-sm">
+                <div className="absolute -left-[14px] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-heading-primary border-4 border-[#fdfbf7] flex items-center justify-center z-10 shadow-sm">
                   <div className="w-2 h-2 bg-white rounded-full" />
                 </div>
                 <h3 className="text-xl sm:text-3xl font-normal text-heading-primary" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif' }}>
