@@ -1,6 +1,11 @@
+import HiddenMoment from './HiddenMoment';
+
 export default function Process() {
   return (
-    <section id="demarche" className="w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 bg-white">
+    <section id="demarche" className="relative w-full py-24 sm:py-32 px-4 sm:px-6 md:px-10 bg-white">
+      {/* Souvenirs cachés : la prophétie des ordinateurs et le rêve Air France */}
+      <HiddenMoment emoji="💻" seconds={8363} label="Un souvenir caché…" className="absolute top-10 right-6 sm:right-16" />
+      <HiddenMoment emoji="✈️" seconds={6707} label="Un souvenir caché…" className="absolute bottom-10 left-6 sm:left-16" delayed />
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-heading-primary mb-12 sm:mb-16 text-center" style={{ fontFamily: '"Neue Haas Grotesk Display Pro 55 Roman", sans-serif', letterSpacing: '-0.02em' }}>
           La démarche derrière ce projet

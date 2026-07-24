@@ -1,5 +1,6 @@
 import { Film, Headphones, Image as ImageIcon, FileText, FolderOpen, ExternalLink } from 'lucide-react';
 import { DRIVE_FOLDER } from '../data/siteConfig';
+import HiddenMoment from './HiddenMoment';
 
 export default function Downloads() {
   const assets = [
@@ -47,6 +48,8 @@ export default function Downloads() {
 
   return (
     <section id="downloads" className="py-24 bg-white relative">
+      {/* Souvenir caché : la bêtise de la 2CV */}
+      <HiddenMoment emoji="🚗" seconds={16959} label="Un souvenir caché…" className="absolute top-10 left-6 sm:left-16" delayed />
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-neue text-dark-green tracking-tight mb-6">
